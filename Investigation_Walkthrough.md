@@ -10,8 +10,7 @@
     withhold his salary unless he clicked a payroll link by 5:00 PM, an
     urgency/fear pretext that\'s a classic phishing pressure tactic.
 
-![](images/image1.png){width="6.458333333333333in"
-height="5.78125in"}
+![](images/image1.png)
 
 # 2. Header Analysis
 
@@ -28,24 +27,20 @@ Digging into the original headers preserved below the forward line:
     which routes replies straight to the attacker\'s lookalike domain.
 
   ----------------------------------------------------------------------- ----------
-  ![](images/image2.png){width="6.028997156605424in"   
-  height="4.802408136482939in"}                                           
+  ![](images/image2.png)                                         
 
   ----------------------------------------------------------------------- ----------
 
-![](images/image3.png){width="6.037217847769029in"
-height="4.788139763779528in"}
+![](images/image3.png)
 
-![](images/image4.png){width="5.833333333333333in"
-height="4.802083333333333in"}
+![](images/image4.png)
 
 The message body contains a credential-harvesting link to the lookalike
 domain. For safe documentation, it\'s defanged as:
 
 hxxps://cloudora-hr-portal\[.\]example/payroll/login
 
-![](images/image5.png){width="6.25in"
-height="3.9166666666666665in"}
+![](images/image5.png)
 
 # 3. Mapping the Campaign Infrastructure
 
@@ -74,11 +69,9 @@ another mailbox shows the attacker ran two variants:
 In total: 3 sending IPs and 1 attacker-registered lookalike domain
 across both variants.
 
-![](images/image6.png){width="8.677116141732283in"
-height="3.8767115048118983in"}
+![](images/image6.png)
 
-![](images/image7.png){width="8.455192475940507in"
-height="5.073115704286964in"}
+![](images/image7.png)
 
 # 4. Threat Intelligence Enrichment
 
@@ -89,8 +82,7 @@ height="5.073115704286964in"}
     (198.18.44.10 and 198.18.44.23), and its mail server IP is
     198.18.51.7, the same IP that sent Variant B.
 
-![](images/image8.png){width="6.25in"
-height="3.625in"}
+![](images/image8.png)
 
 -   AbuseIPDB: IP 198.18.44.10 has a 100% abuse-confidence score from 37
     reports (12 distinct reporters), hosted by "Example Hosting B.V."
@@ -99,8 +91,7 @@ height="3.625in"}
     the campaign date citing the exact cloudora-hr-portal\[.\]example
     harvesting link.
 
-![](images/image9.png){width="6.25in"
-height="3.9895833333333335in"}
+![](images/image9.png)
 
 # 5. Ruling Out a False Positive
 
@@ -111,20 +102,16 @@ sure it isn\'t part of the campaign:
     both cloudora.io and its authorized email vendor, mcsv.net
     (Mailchimp).
 
-![](images/image10.png){width="6.041666666666667in"
-height="2.3020833333333335in"}
-
+![](images/image10.png)
 -   Standard one-click List-Unsubscribe headers are present, consistent
     with legitimate bulk marketing mail.
 
-![](images/image11.png){width="6.041666666666667in"
-height="0.5625in"}
+![](images/image11.png)
 
 -   From and Reply-To both legitimately read "Cloudora News"
     \<news@cloudora.io\>, no domain mismatch.
 
-![](images/image12.png){width="5.208333333333333in"
-height="0.9583333333333334in"}
+![](images/image12.png)
 
 Conclusion: this newsletter is authentic and unrelated to the phishing
 campaign.
@@ -135,21 +122,17 @@ campaign.
     the MyFreeCluster/Cloudora workspace to prepare authentication
     records for analysis.
 
-![](images/image13.png){width="6.25in"
-height="2.6770833333333335in"}
+![](images/image13.png)
 
 2.  Select CloudoraMsgTrace_CL as the destination table for the email
     delivery and interaction (click) logs.
 
-![](images/image14.png){width="6.25in"
-height="2.65625in"}
+![](images/image14.png)
 
 3.  Run a count query to confirm ingestion.
 
   ------------------------------------------------------------------------- -------------------------------------------------------------------------
-  ![](images/image15.png){width="3.0208333333333335in"   ![](images/image16.png){width="3.0208333333333335in"
-  height="2.125in"}                                                         height="1.8020833333333333in"}
-
+  ![](images/image15.png)  ![](images/image16.png)
   ------------------------------------------------------------------------- -------------------------------------------------------------------------
 
 # 7. Delivery and Click Analysis
@@ -161,16 +144,14 @@ So filtering caught some of the outright-spoofed Variant A traffic (7 of
 40 messages quarantined), but every single fully-authenticated Variant B
 message, the more dangerous one, reached an inbox.
 
-![](images/image17.png){width="6.25in"
-height="3.1145833333333335in"}
+![](images/image17.png)
 
 ## Who clicked
 
 Querying click events shows 6 employees clicked the link; 2 went on to
 submit credentials:
 
-![](images/image18.png){width="6.25in"
-height="3.59375in"}
+![](images/image18.png)
 
 # 8. Confirming Account Compromise via Sign-In Logs
 
@@ -186,8 +167,7 @@ authenticated with a correct password rather than guessing one. During
 that window the attacker\'s session touched Microsoft 365, Outlook Web
 App, and (for Freya) SharePoint Online.
 
-![](images/image19.png){width="6.25in"
-height="2.71875in"}
+![](images/image19.png)
 
 Pivoting on the attacker\'s IP range confirms it acted on both accounts:
 
