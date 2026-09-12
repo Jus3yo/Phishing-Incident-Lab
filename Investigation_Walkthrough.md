@@ -171,5 +171,4 @@ App, and (for Freya) SharePoint Online.
 
 Pivoting on the attacker\'s IP range confirms it acted on both accounts:
 
-![](images/image20.png){width="6.25in"
-height="2.15625in"}
+![](images/image20.png)
