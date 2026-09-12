@@ -73,8 +73,4 @@ Full detail, MITRE ATT&CK mapping, timeline, and recommendations are in
 | `05_phishing_payroll_variantA_forwarded.eml` | Variant A, forwarded copy with headers preserved |
 | `06_phishing_payroll_variantA_firstwave.eml` | Variant A, first-wave sample (198.18.44.10) |
 
-## Suggested next steps for this lab
 
-- Try re-deriving Findings 1–6 yourself from the raw `.eml` files before reading `Investigation_Walkthrough.md`.
-- Re-run the queries in `KQL_Queries.md` against your own sample data to practice the KQL patterns.
-- Extend the MITRE ATT&CK mapping in the incident report with detection/mitigation ideas of your own.
